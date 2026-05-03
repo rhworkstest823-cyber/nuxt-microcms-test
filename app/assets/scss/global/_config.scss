@@ -1,0 +1,41 @@
+// Base
+$font-smoothing: antialiased; //antialiased, subpixel-antialiased, none
+$base-font-family: "Noto Sans JP", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "sans-serif";
+$base-font-family-en: "Urbanist", "sans-serif";
+$base-font-family-mincho: "Shippori Mincho", serif;
+$base-font-size: inherit;
+$base-line-height: 1.6;
+
+// Path
+$path: "/";
+$path-root: "/";
+$path-img-common: "/assets/images/common/";
+
+// Stacking Order
+$z-index-1: 1;
+$z-index-pointer: 93;
+$z-index-header: 92;
+$z-index-footer: 90;
+$z-index-pageTop: 91;
+
+// Layout
+$border-width: 1px;
+$bg-border-width: 1px;
+$grid-width-sm: 93px;
+$grid-width-md: 159px;
+
+$content-padding-right-sm: max(6vw, 22.5px);
+$content-padding-left-sm: max(6.27vw, 23.5px);
+$content-padding-md: min(6.25vw, 80px);
+$content-max-width: 1120px - $bg-border-width;
+$content-max-width-800: 800px - $bg-border-width;
+$content-max-width-1200: 1200px - $bg-border-width;
+
+// Breakpoint
+$breakpoints: (
+  sm: 0,
+  xsm: 600px,
+  md: 768px,
+  xmd: 1024px,
+  lg: 1280px,
+) !default;

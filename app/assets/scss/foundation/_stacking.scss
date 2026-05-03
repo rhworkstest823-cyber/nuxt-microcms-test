@@ -1,0 +1,16 @@
+@use "sass:map";
+
+$stacking-group: (
+  'base': 10,
+  'fixed': 50,
+  'modal': 60,
+  'popover': 70,
+  'tooltip': 80,
+) !default;
+
+/// @group stacking
+$stacking-base: map.get($stacking-group, 'base') !default;
+$stacking-fixed: map.get($stacking-group, 'fixed') !default;
+$stacking-modal: map.get($stacking-group, 'modal') !default;
+$stacking-popover: map.get($stacking-group, 'popover') !default;
+$stacking-tooltip: map.get($stacking-group, 'tooltip') !default;

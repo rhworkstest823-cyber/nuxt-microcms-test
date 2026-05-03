@@ -1,0 +1,47 @@
+/* ------------------------
+  Base Settings
+------------------------ */
+html {
+  font-size: inherit;
+}
+
+body {
+  background-color: #fff;
+  word-break: normal;
+  color: #000;
+  font-family: "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "sans-serif";
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-wrap: anywhere;
+  line-break: strict; // 禁則処理を厳格に適用
+}
+
+// a {
+//   text-decoration: $base-link-text_decoration-default;
+//   color: $base-link-color-link;
+
+//   &:visited {
+//     color: $base-link-color-visited;
+//   }
+
+//   &:hover {
+//     text-decoration: $base-link-text_decoration-hover;
+//     color: $base-link-color-hover;
+//   }
+
+//   &:active {
+//     text-decoration: $base-link-text_decoration-hover;
+//     color: $base-link-color-active;
+//   }
+
+//   &[href^="tel:"] {
+//     &:hover {
+//       color: $base-link-color-link;
+//     }
+//     @include breakpoint-up(md) {
+//       text-decoration: $base-link-text_decoration-hover;
+//       cursor: text;
+//     }
+//   }
+// }

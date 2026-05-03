@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-microcms",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "oxlint --type-aware . && eslint .",
+    "lint:fix": "oxlint --type-aware . --fix --fix-suggestions && eslint . --fix",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "microcms-js-sdk": "^3.4.0",
+    "nuxt": "^4.4.2",
+    "vue": "^3.5.33",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "eslint": "^10.3.0",
+    "eslint-plugin-oxlint": "^1.62.0",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
+    "oxlint-tsgolint": "^0.22.1",
+    "sass": "^1.99.0",
+    "sass-embedded": "^1.99.0",
+    "typescript": "^6.0.3"
+  }
+}

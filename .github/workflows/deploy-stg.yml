@@ -6,6 +6,13 @@ on:
     branches:
       - build-stg
 
+  workflow_dispatch:  # 手動実行
+    inputs:
+      reason:
+        description: '実行理由（任意）'
+        required: false
+        default: '手動デプロイ'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

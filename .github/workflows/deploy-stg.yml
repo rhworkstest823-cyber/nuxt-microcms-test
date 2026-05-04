@@ -32,8 +32,7 @@ jobs:
           EXECUTION_ID=$(aws codepipeline start-pipeline-execution \
             --name nuxt-microcms-test-build \
             --query 'pipelineExecutionId' \
-            --output text \
-            --profile aws-test-codepipeline)
+            --output text)
           echo "Pipeline execution ID: $EXECUTION_ID"
 
       - name: パイプラインの確認URLを表示

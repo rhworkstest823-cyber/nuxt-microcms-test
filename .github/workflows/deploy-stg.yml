@@ -1,0 +1,39 @@
+name: Deploy to Staging
+
+# build-stg ブランチへのプッシュで AWS CodePipeline を起動
+on:
+  push:
+    branches:
+      - build-stg
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: AWSクレデンシャルを設定
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ap-northeast-1
+
+      - name: CodePipelineを起動
+        id: pipeline
+        run: |
+          EXECUTION_ID=$(aws codepipeline start-pipeline-execution \
+            --name nuxt-microcms-test-build \
+            --query 'pipelineExecutionId' \
+            --output text \
+            --profile aws-test-codepipeline)
+          echo "Pipeline execution ID: $EXECUTION_ID"
+
+      - name: パイプラインの確認URLを表示
+        run: |
+          echo "======================================"
+          echo "Staging deployment started!"
+          echo "======================================"
+          echo ""
+          echo "Monitor pipeline at:"
+          echo "https://ap-northeast-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/nuxt-microcms-test-build/view"

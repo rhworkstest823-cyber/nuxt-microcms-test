@@ -42,6 +42,10 @@ export default defineNuxtConfig({
    '~/assets/scss/main.scss',
  ],
 
+ build: {
+   transpile: ['three'],
+ },
+
  vite: {
     css: {
       preprocessorOptions: {
@@ -62,6 +66,8 @@ export default defineNuxtConfig({
         '@vue/devtools-kit',
         'zod',
         'microcms-js-sdk',
+        'gsap',
+        'three',
       ]
     }
  },

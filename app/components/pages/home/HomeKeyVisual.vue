@@ -3,6 +3,7 @@ import type { MicroCMSImage } from 'microcms-js-sdk';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/vue-splide';
 import type { PaginationData } from '@splidejs/splide';
 import '@splidejs/vue-splide/css/core';
+import { createWebGLTransition } from '~/utils/splide-webgl-transition';
 
 type HomeKeyVisualProps = {
   keyVisual: MicroCMSImage[]; // KV画像は複数枚想定
@@ -17,8 +18,8 @@ const kvSlideOptions = ref({
   autoplay: true,
   autoWidth: true,
   rewind: true,
-  speed: 1500,
-  interval: 4500,
+  speed: 0,
+  interval: 5500,
   pagination: true,
   arrows: false,
   classes: {
@@ -31,6 +32,15 @@ const kvSlideOptions = ref({
     767: {},
   },
 });
+
+const kvExtensions = {
+  webglTransition: createWebGLTransition({
+    effect: 'glass',
+    preset: 'Default',
+    duration: 2.4,
+  }),
+};
+
 const kvCarousel = ref(); // Splideインスタンスへの参照
 
 const calcCircleOffset = (circle: SVGCircleElement) => {
@@ -87,6 +97,7 @@ const animatePager = (rate: number) => {
         v-if="isMountSplide"
         class="p-kvCarousel"
         :options="kvSlideOptions"
+        :extensions="kvExtensions"
         :has-track="false"
         ref="kvCarousel"
         @splide:pagination:mounted="(_, data) => onMountedPagination(data)"

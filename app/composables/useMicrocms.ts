@@ -58,11 +58,22 @@ export const useMicrocms = () => {
     return response;
   };
 
+  // フロントページ ----------------------------------
+  const getFrontPage = (queries?: MicroCMSQueries) => {
+    const response = client.getListDetail<FrontPage>({
+      endpoint: MICROCMS_ENDPOINTS.FRONT_PAGE,
+      contentId: 'contents',
+      queries,
+    });
+    return response;
+  };
+
   return {
     getNewsList,
     getNewsDetail,
     getBusinessCategoryList,
     getBusinessList,
     getBusinessDetail,
+    getFrontPage,
   };
 };

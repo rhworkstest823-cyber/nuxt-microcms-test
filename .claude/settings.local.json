@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --version)",
+      "Bash(pnpm install *)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('optionalDependencies', {}\\), indent=2\\)\\)\")",
+      "Read(//Users/unt/**)",
+      "Bash(pnpm config *)",
+      "Bash(pnpm store *)",
+      "Bash(corepack --version)",
+      "Bash(./node_modules/.bin/nuxt prepare *)",
+      "Bash(nvm --version)",
+      "Bash(volta --version)",
+      "Bash(nodenv versions *)",
+      "Bash(nodenv version *)",
+      "Bash(node -e \"const {styleText} = require\\('node:util'\\); console.log\\(typeof styleText\\)\")",
+      "Bash(pnpm exec *)",
+      "Bash(nodenv which *)",
+      "Bash(nodenv global *)",
+      "Bash(/Users/unt/.npm/bin/pnpm exec *)",
+      "Bash(node -e \"require\\('child_process'\\).execSync\\('pnpm exec node --version', {stdio: 'inherit', env: {...process.env}}\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:d[k] for k in ['version','main','module','types','typings','exports'] if k in d}, indent=2\\)\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('compilerOptions',{}\\), indent=2\\)\\)\")"
+    ],
+    "additionalDirectories": [
+      "/Users/unt/private-folder/docs/tests/nuxt-microcms/node_modules"
+    ]
+  }
+}

@@ -42,6 +42,8 @@ const nuxtLinkProps = {
   'aria-label': ariaLabel,
 };
 
+const NuxtLink = resolveComponent('NuxtLink');
+
 const component = computed(() => {
   switch (element) {
     case "button":
@@ -56,7 +58,7 @@ const component = computed(() => {
       };
     case "nuxt-link":
       return {
-        tag: resolveComponent('NuxtLink'),
+        tag: NuxtLink,
         props: nuxtLinkProps,
       };
     default:

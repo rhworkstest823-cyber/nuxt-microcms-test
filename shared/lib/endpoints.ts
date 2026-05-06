@@ -3,7 +3,7 @@
  *
  */
 export const MICROCMS_ENDPOINTS = {
-  FRONT_PAGE: 'front_page/contents', // トップページは固定のコンテンツIDを持つAPIエンドポイントから取得
+  FRONT_PAGE: 'front_page',
   NEWS: 'news',
   NEWS_CATEGORY: 'news_category',
   BUSINESS: 'business',

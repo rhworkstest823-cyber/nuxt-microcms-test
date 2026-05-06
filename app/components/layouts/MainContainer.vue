@@ -10,9 +10,11 @@
 
 <style lang="scss" scoped>
 .l-main {
+  position: relative;
+  overflow: clip;
   padding-top: rem(60);
   @include breakpoint-up(md) {
-    padding-top: rem(80);
+    padding-top: rem(72);
   }
 }
 

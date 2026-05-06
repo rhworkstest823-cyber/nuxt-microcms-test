@@ -56,6 +56,8 @@ export type GoogleMap = {
 export type Business = MicroCMSListContent & {
   title: string
   category: BusinessCategory
+  keyVisual: MicroCMSImage[] // 画像（複数）
+  tag: string[]
   copyText: string
   description: string
   linkList: DetailLink[]

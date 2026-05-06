@@ -1,3 +1,5 @@
+@use "./global" as *;
+
 /* ------------------------
   microCMS リッチエディタ用のスタイル
 ------------------------ */
@@ -5,6 +7,101 @@
   p {
     & + p {
       margin-top: 1em;
+    }
+  }
+
+  h2 {
+    font-size: rem(24);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-block: rem(40) rem(24);
+
+    @include breakpoint-up(md) {
+      margin-block: rem(60) rem(32);
+      font-size: rem(30);
+    }
+
+    &.--en {
+      font-family: $base-font-family-en;
+      font-weight: 800;
+
+      @include breakpoint-up(md) {
+        font-size: rem(36);
+      }
+    }
+    > span {
+      font-size: rem(19);
+      @include breakpoint-up(md) {
+        font-size: rem(22);
+      }
+    }
+  }
+
+  h3 {
+    margin-top: rem(24);
+    font-size: rem(19);
+    @include breakpoint-up(md) {
+      font-size: rem(22);
+    }
+
+    &.--en {
+      font-family: $base-font-family-en;
+      font-size: rem(21);
+      font-weight: 800;
+
+      @include breakpoint-up(md) {
+        font-size: rem(24);
+      }
+    }
+  }
+
+  ul,
+  ol {
+    margin-top: rem(24);
+
+    > li {
+      position: relative;
+      padding-left: 1.2em;
+      line-height: 1.5;
+
+      &::before {
+        content: "・";
+        position: absolute;
+        left: 0;
+        font-weight: 700;
+      }
+
+      & + li {
+        margin-top: rem(3);
+
+        @include breakpoint-up(md) {
+          margin-top: rem(4);
+        }
+      }
+    }
+  }
+
+  a {
+    position: relative;
+    text-decoration: underline;
+    word-break: break-word;
+
+    @include hover {
+      text-decoration: none;
+    }
+
+    &[target="_blank"] {
+      &::after {
+        content: "";
+        display: inline-block;
+        clip-path: none;
+        z-index: 2;
+        margin-inline: rem(2) rem(4);
+        width: rem(11);
+        height: rem(9);
+        background: url(#{$path-img-common}icon_blank.svg) no-repeat center / 100% auto;
+        background-color: transparent;
+      }
     }
   }
 }

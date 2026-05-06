@@ -1,38 +1,29 @@
 <script setup lang="ts">
 import MainContainer from '~/components/layouts/MainContainer.vue';
 import ContentsContainer from '~/components/layouts/ContentsContainer.vue';
-import NewsList from '~/components/ui/NewsList.vue';
+import PageKv from '~/components/parts/PageKv.vue';
+import PageCont from '~/components/layouts/PageCont.vue';
+import NewsListContainer from '~/components/containers/NewsListContainer.vue';
 
 definePageMeta({
   layout: 'default',
 });
 
 usePageSeoMeta('ニュースページ', 'これはニュースページの説明文です。これはニュースページの説明文です。これはニュースページの説明文です。これはニュースページの説明文です。');
-
-const { data: newsList, error } = await useAsyncData(
-  'news-list',
-  () => {
-    const { getNewsList } = useMicrocms();
-    return getNewsList({
-      limit: 100,
-      orders: '-publishedAt', // 新着順
-      fields: ['id', 'title', 'datetime'], // 通信量削減のため一覧ページは必要フィールドのみ
-    });
-  },
-  {
-    getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
-  }
-);
-
-if (error.value) {
-   throw createError({ statusCode: 500, message: 'お知らせが取得できませんでした。' })
-}
 </script>
 
 <template>
   <MainContainer>
+    <PageKv title="お知らせ" titleEn="news" />
     <ContentsContainer>
-      <NewsList v-if="newsList" :response="newsList" />
+      <PageCont col="col-2">
+        <template #side>
+          <div></div>
+        </template>
+        <template #main>
+          <NewsListContainer />
+        </template>
+      </PageCont>
     </ContentsContainer>
   </MainContainer>
 </template>

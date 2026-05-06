@@ -5,14 +5,20 @@
 <template>
   <header class="l-header">
     <div class="l-header__inner">
-      <a href="/" class="l-header__logo"></a>
+      <NuxtLink to="/" class="l-header__logo"><NuxtImg src="/assets/images/common/logo.svg" alt="Company Logo" /></NuxtLink>
       <nav class="l-header__nav" aria-label="グローバルナビゲーション">
         <ul class="l-header__navList">
           <li class="l-header__navItem">
-            <NuxtLink to="/news" class="l-header__navLink">ニュース</NuxtLink>
+            <NuxtLink to="/news" class="l-header__navLink">
+              <span class="l-header__navLink-txtEn">News</span>
+              <span class="l-header__navLink-txt">ニュース</span>
+            </NuxtLink>
           </li>
           <li class="l-header__navItem">
-            <NuxtLink to="/business" class="l-header__navLink">事例紹介</NuxtLink>
+            <NuxtLink to="/business" class="l-header__navLink">
+              <span class="l-header__navLink-txtEn">Business</span>
+              <span class="l-header__navLink-txt">事例</span>
+            </NuxtLink>
           </li>
         </ul>
       </nav>
@@ -39,7 +45,7 @@
     border-bottom: $border-width solid clr.$color-black;
     background-color: clr.$color-white;
     pointer-events: auto;
-    --_header-height: #{rem(80)};
+    --_header-height: #{rem(72)};
   }
 
   @include breakpoint-up(md) {
@@ -57,5 +63,67 @@
   //     transition: transform $duration-ul-on $easeOutQuart;
   //   }
   // }
+}
+
+.l-header__inner {
+  height: 100%;
+
+  @include breakpoint-up(md) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.l-header__logo {
+  flex-shrink: 0;
+  width: rem(60);
+  font-family: $base-font-family-en;
+  font-weight: 800;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.l-header__nav {
+  @include breakpoint-up(md) {
+    padding-inline: rem(16);
+  }
+}
+
+.l-header__navList {
+  display: flex;
+
+  @include breakpoint-up(md) {
+    column-gap: rem(32);
+  }
+}
+
+.l-header__navLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.l-header__navLink-txtEn {
+  text-transform: uppercase;
+  @include breakpoint-up(md) {
+    font-family: $base-font-family-en;
+    font-size: rem(18);
+    font-weight: 800;
+    line-height: 1.4;
+  }
+}
+
+.l-header__navLink-txt {
+  @include breakpoint-up(md) {
+    font-size: rem(12);
+    font-weight: 400;
+    line-height: 1;
+  }
 }
 </style>

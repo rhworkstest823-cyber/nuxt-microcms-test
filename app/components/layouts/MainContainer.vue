@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="l-main">
     <div class="l-container">

@@ -9,7 +9,7 @@ definePageMeta({
 
 usePageSeoMeta('トップページ', 'これは事例ページの説明文です。これは事例ページの説明文です。これは事例ページの説明文です。これは事例ページの説明文です。');
 
-const { data: businessCategoryList, error: businessCategoryError } = await useAsyncData(
+const { error: businessCategoryError } = await useAsyncData(
   'business-category-list',
   () => {
     const { getBusinessCategoryList} = useMicrocms();
@@ -63,7 +63,3 @@ const businessListRef = ref(structuredClone(businessList.value?.contents));
     </ContentsContainer>
   </MainContainer>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

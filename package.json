@@ -7,6 +7,8 @@
     "dev": "nuxt dev",
     "lint": "oxlint --type-aware . && eslint .",
     "lint:fix": "oxlint --type-aware . --fix --fix-suggestions && eslint . --fix",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -34,5 +36,8 @@
     "sass": "^1.99.0",
     "sass-embedded": "^1.99.0",
     "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }

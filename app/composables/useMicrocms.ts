@@ -1,7 +1,6 @@
 import { createClient } from "microcms-js-sdk";
 import type { MicroCMSQueries } from 'microcms-js-sdk'
-import type { MicroCMSImage, MicroCMSListResponse } from "microcms-js-sdk";
-import type { News, NewsCategory, Business, BusinessCategory } from '#shared/types/microcms';
+import type { News, Business, BusinessCategory } from '#shared/types/microcms';
 import { MICROCMS_ENDPOINTS } from '#shared/lib/endpoints';
 
 export const useMicrocms = () => {

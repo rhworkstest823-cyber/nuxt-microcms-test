@@ -10,11 +10,9 @@ const fetchAllRoutes = async (
   endpoint: string,
   prefix: string,
 ): Promise<string[]> => {
-  const { contents } = await client.getList({
-    endpoint,
-    queries: { fields: 'id' },
-  });
-  return contents.map((item) => `${prefix}/${item.id}`);
+  // getListのデフォルトlimitは10件のため、全件取得できる getAllContentIds を使用
+  const ids = await client.getAllContentIds({ endpoint });
+  return ids.map((id) => `${prefix}/${id}`);
 };
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -104,7 +102,7 @@ export default defineNuxtConfig({
    }
  },
 
- modules: ['@nuxt/image'],
+ modules: ['@nuxt/image', '@nuxt/eslint'],
 
  typescript: {
    tsConfig: {

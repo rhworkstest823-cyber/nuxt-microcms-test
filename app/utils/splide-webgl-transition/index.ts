@@ -16,7 +16,9 @@ type SplideInstance = {
     Elements: { track: HTMLElement; root: HTMLElement };
     Slides: { getAt(index: number): SlideComponent | undefined };
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Splideのイベントハンドラ型に合わせる
   on: (event: string, handler: (...args: any[]) => void) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- 同上
   off: (event: string, handler: (...args: any[]) => void) => void;
   index: number;
   root: HTMLElement;
@@ -83,7 +85,7 @@ export function WebGLTransition(
     }
     renderer.initialize(track, maxPixelRatio, enableTextureCache);
     renderer.attach(zIndex);
-    preloadAllTextures();
+    void preloadAllTextures();
   }
 
   function handleMove(newIndex: number, prevIndex: number) {

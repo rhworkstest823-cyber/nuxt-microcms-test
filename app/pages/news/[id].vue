@@ -24,7 +24,8 @@ if (error.value) {
 
 usePageSeoMeta(
   newsDetail.value?.title || 'ニュース詳細',
-  newsDetail.value?.content || 'ニュースの詳細ページです。',
+  // contentはHTMLのため、タグを除去して先頭120文字をdescriptionにする
+  newsDetail.value?.content?.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 120) || 'ニュースの詳細ページです。',
 );
 
 const formattedDate = computed(() => {

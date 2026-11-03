@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <header class="l-header">
     <div class="l-header__inner">

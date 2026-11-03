@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Business, BusinessListResponse } from '#shared/types/microcms';
+import type { Business } from '#shared/types/microcms';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/vue-splide';
 import SplideCarouselArrows from '~/components/parts/SplideCarouselArrows.vue';
 import TagDefault from '~/components/parts/TagDefault.vue';

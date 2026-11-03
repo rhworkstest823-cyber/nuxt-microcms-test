@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { News, NewsListResponse } from '#shared/types/microcms';
+import type { NewsListResponse } from '#shared/types/microcms';
 
 interface NewsListProps {
   response: NewsListResponse;

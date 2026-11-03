@@ -1,10 +1,7 @@
 import type {
   MicroCMSImage,
-  MicroCMSContentId,
-  MicroCMSDate,
   MicroCMSListResponse,
   MicroCMSListContent,
-  MicroCMSObjectContent,
 } from 'microcms-js-sdk'
 
 // お知らせ ----------------------------------

@@ -5,4 +5,5 @@
     "newlinesBetween": false,
   },
   "embeddedLanguageFormatting": "auto",
+  "ignorePatterns": [".claude/**", "spec/**", ".nuxt/**", ".output/**", "dist/**", "public/**", ".github/**", ".vscode/**", "buildspec.yml", "package-lock.json", "*.md"],
 }

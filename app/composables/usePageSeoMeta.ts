@@ -4,7 +4,7 @@ export const usePageSeoMeta = (title: string, description: string) => {
     description: description,
     ogTitle: `${title} | サイト名`,
     ogDescription: description,
-    ogImage: '/ogp.png',
-    twitterCard: 'summary_large_image',
-  })
-}
+    ogImage: "/ogp.png",
+    twitterCard: "summary_large_image",
+  });
+};

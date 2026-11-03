@@ -1,4 +1,4 @@
-import type { EffectType, EffectParameters, GlobalSettings } from './types';
+import type { EffectType, EffectParameters, GlobalSettings } from "./types";
 
 export const DEFAULT_GLOBAL_SETTINGS: GlobalSettings = {
   globalIntensity: 1.0,

@@ -10,9 +10,9 @@ import {
   Vector2,
   Material,
   type IUniform,
-} from 'three';
-import type { CachedTexture } from './types';
-import { vertexShader, fragmentShader } from './shaders';
+} from "three";
+import { vertexShader, fragmentShader } from "./shaders";
+import type { CachedTexture } from "./types";
 
 const MAX_CACHE_SIZE = 50;
 const MAX_CACHE_AGE_MS = 30_000;
@@ -40,7 +40,7 @@ export class SplideWebGLRenderer {
     this.maxPixelRatio = maxPixelRatio;
     this.enableCache = enableCache;
 
-    this.canvas = document.createElement('canvas');
+    this.canvas = document.createElement("canvas");
     this.canvas.style.cssText = `
       position: absolute;
       inset: 0;
@@ -57,12 +57,12 @@ export class SplideWebGLRenderer {
       canvas: this.canvas,
       antialias: false,
       alpha: true,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
     });
 
     const computedStyle = window.getComputedStyle(container);
-    if (computedStyle.position === 'static') {
-      container.style.position = 'relative';
+    if (computedStyle.position === "static") {
+      container.style.position = "relative";
     }
 
     container.appendChild(this.canvas);
@@ -81,7 +81,7 @@ export class SplideWebGLRenderer {
 
   setVisibility(visible: boolean): void {
     if (this.canvas) {
-      this.canvas.style.opacity = visible ? '1' : '0';
+      this.canvas.style.opacity = visible ? "1" : "0";
     }
   }
 
@@ -134,7 +134,7 @@ export class SplideWebGLRenderer {
   }
 
   setupScene(material: ShaderMaterial): void {
-    if (!this.scene) throw new Error('Renderer not initialized');
+    if (!this.scene) throw new Error("Renderer not initialized");
 
     this.disposeMesh();
 
@@ -190,7 +190,7 @@ export class SplideWebGLRenderer {
   private loadImageWithCors(url: string): Promise<HTMLImageElement> {
     return new Promise((resolve, reject) => {
       const image = new Image();
-      image.crossOrigin = 'anonymous';
+      image.crossOrigin = "anonymous";
 
       const timer = setTimeout(() => {
         cleanup();
@@ -199,8 +199,8 @@ export class SplideWebGLRenderer {
 
       const cleanup = () => {
         clearTimeout(timer);
-        image.removeEventListener('load', onLoad);
-        image.removeEventListener('error', onError);
+        image.removeEventListener("load", onLoad);
+        image.removeEventListener("error", onError);
       };
 
       const onLoad = () => {
@@ -212,8 +212,8 @@ export class SplideWebGLRenderer {
         reject(new Error(`Failed to load image: ${url}`));
       };
 
-      image.addEventListener('load', onLoad);
-      image.addEventListener('error', onError);
+      image.addEventListener("load", onLoad);
+      image.addEventListener("error", onError);
       image.src = url;
     });
   }

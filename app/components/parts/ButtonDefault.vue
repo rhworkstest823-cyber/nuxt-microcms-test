@@ -1,6 +1,6 @@
 <script setup lang="ts">
 type ButtonDefaultProps = {
-  element?: 'button' | 'anchor-link' | 'nuxt-link';
+  element?: "button" | "anchor-link" | "nuxt-link";
   text?: string;
   type?: string;
   href?: string;
@@ -11,7 +11,17 @@ type ButtonDefaultProps = {
   back?: boolean;
 };
 
-const { element = 'button', text = '', type = 'button', href = '', target = '', to = '', disabled = false, ariaLabel = '', back = false } = defineProps<ButtonDefaultProps>();
+const {
+  element = "button",
+  text = "",
+  type = "button",
+  href = "",
+  target = "",
+  to = "",
+  disabled = false,
+  ariaLabel = "",
+  back = false,
+} = defineProps<ButtonDefaultProps>();
 
 const emit = defineEmits<{
   (e: "onClick"): void;
@@ -26,34 +36,34 @@ const buttonProps = {
   type,
   onClick,
   disabled,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
 };
 
 // アンカーリンクの場合
 const anchorProps = {
   href,
   target,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
 };
 
 // NuxtLinkの場合
 const nuxtLinkProps = {
   to,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
 };
 
-const NuxtLink = resolveComponent('NuxtLink');
+const NuxtLink = resolveComponent("NuxtLink");
 
 const component = computed(() => {
   switch (element) {
     case "button":
       return {
-        tag: 'button',
+        tag: "button",
         props: buttonProps,
       };
     case "anchor-link":
       return {
-        tag: 'a',
+        tag: "a",
         props: anchorProps,
       };
     case "nuxt-link":
@@ -63,7 +73,7 @@ const component = computed(() => {
       };
     default:
       return {
-        tag: 'button',
+        tag: "button",
         props: buttonProps,
       };
   }
@@ -71,7 +81,11 @@ const component = computed(() => {
 </script>
 
 <template>
-  <component :is="component.tag" v-bind="{ ...component.props }" :class="['c-btn', { 'c-btn__back': back }]">
+  <component
+    :is="component.tag"
+    v-bind="{ ...component.props }"
+    :class="['c-btn', { 'c-btn__back': back }]"
+  >
     <span class="c-btnTxt">{{ text }}</span>
     <span class="c-btnIcon"></span>
   </component>

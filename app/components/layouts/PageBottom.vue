@@ -1,9 +1,9 @@
 <script setup lang="ts">
 interface PageBottomProps {
-  align?: 'left' | 'center' | 'right';
-};
+  align?: "left" | "center" | "right";
+}
 
-const { align = 'center' } = defineProps<PageBottomProps>();
+const { align = "center" } = defineProps<PageBottomProps>();
 </script>
 
 <template>

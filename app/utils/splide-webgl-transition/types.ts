@@ -1,13 +1,13 @@
-import type { Texture } from 'three';
+import type { Texture } from "three";
 
-export type EffectType = 'glass' | 'frost' | 'ripple' | 'plasma' | 'timeshift';
+export type EffectType = "glass" | "frost" | "ripple" | "plasma" | "timeshift";
 
 export type EffectPresetMap = {
-  glass: 'Subtle' | 'Default' | 'Crystal' | 'Liquid';
-  frost: 'Light' | 'Default' | 'Heavy' | 'Arctic';
-  ripple: 'Gentle' | 'Default' | 'Strong' | 'Tsunami';
-  plasma: 'Calm' | 'Default' | 'Storm' | 'Nuclear';
-  timeshift: 'Subtle' | 'Default' | 'Intense' | 'Dreamlike';
+  glass: "Subtle" | "Default" | "Crystal" | "Liquid";
+  frost: "Light" | "Default" | "Heavy" | "Arctic";
+  ripple: "Gentle" | "Default" | "Strong" | "Tsunami";
+  plasma: "Calm" | "Default" | "Storm" | "Nuclear";
+  timeshift: "Subtle" | "Default" | "Intense" | "Dreamlike";
 };
 
 export interface GlobalSettings {

@@ -11,7 +11,10 @@ const { level = 2, ...props } = defineProps<HeadingProps>();
 const HeadingPropsSchema = z.object({
   level: z.number().int().min(2).max(6),
   text: z.string(),
-  textEn: z.string().regex(/^[A-Za-z\s]+$/, "英字（全角半角）とスペースのみ").optional(),
+  textEn: z
+    .string()
+    .regex(/^[A-Za-z\s]+$/, "英字（全角半角）とスペースのみ")
+    .optional(),
 });
 HeadingPropsSchema.parse({ level, ...props }); // propsのバリデーションを実行
 
@@ -21,8 +24,17 @@ const headingElement = computed(() => `h${level}`);
 <template>
   <component :is="headingElement" class="c-heading">
     <span class="c-heading-icon">
-      <svg fill="none" height="20" viewBox="0 0 21 20" width="21" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#000" stroke-width="1"><path d="m10.5 0v20"/><path d="m.5 10h20"/></g>
+      <svg
+        fill="none"
+        height="20"
+        viewBox="0 0 21 20"
+        width="21"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g stroke="#000" stroke-width="1">
+          <path d="m10.5 0v20" />
+          <path d="m.5 10h20" />
+        </g>
       </svg>
     </span>
     <span class="c-heading-main">{{ props.textEn }}</span>

@@ -1,13 +1,9 @@
-import gsap from 'gsap';
-import { Vector2, type IUniform } from 'three';
-import type {
-  WebGLTransitionOptions,
-  EffectType,
-  CachedTexture,
-} from './types';
-import { SplideWebGLRenderer } from './renderer';
-import { getEffectIndex } from './shaders';
-import { DEFAULT_GLOBAL_SETTINGS, getEffectParameters } from './effects';
+import gsap from "gsap";
+import { Vector2, type IUniform } from "three";
+import { DEFAULT_GLOBAL_SETTINGS, getEffectParameters } from "./effects";
+import { SplideWebGLRenderer } from "./renderer";
+import { getEffectIndex } from "./shaders";
+import type { WebGLTransitionOptions, EffectType, CachedTexture } from "./types";
 
 type SlideComponent = { slide: HTMLElement };
 
@@ -30,8 +26,8 @@ export function WebGLTransition(
   options: WebGLTransitionOptions = {},
 ) {
   const {
-    effect = 'glass',
-    preset = 'Default',
+    effect = "glass",
+    preset = "Default",
     duration = 1.0,
     globalSettings = {},
     effectParameters = {},
@@ -44,21 +40,21 @@ export function WebGLTransition(
   const renderer = new SplideWebGLRenderer();
   let isTransitioning = false;
   let animationFrameId: number | null = null;
-  let activeMaterial: ReturnType<SplideWebGLRenderer['createShaderMaterial']> | null = null;
+  let activeMaterial: ReturnType<SplideWebGLRenderer["createShaderMaterial"]> | null = null;
   let currentTween: gsap.core.Tween | null = null;
 
   const log = (...args: unknown[]) => {
-    if (debug) console.log('[WebGLTransition]', ...args);
+    if (debug) console.log("[WebGLTransition]", ...args);
   };
 
   function getSlideImageUrl(index: number): string | null {
     try {
       const slide = splide.Components.Slides.getAt(index);
       if (!slide) return null;
-      const img = slide.slide.querySelector('img');
+      const img = slide.slide.querySelector("img");
       return img?.currentSrc || img?.src || null;
     } catch (e) {
-      log('getSlideImageUrl error', e);
+      log("getSlideImageUrl error", e);
       return null;
     }
   }
@@ -72,15 +68,15 @@ export function WebGLTransition(
       if (url) urls.add(url);
     }
     return Promise.all(Array.from(urls).map((url) => renderer.loadTexture(url)))
-      .then(() => log('preloaded', urls.size, 'textures'))
-      .catch((e) => log('preload error', e));
+      .then(() => log("preloaded", urls.size, "textures"))
+      .catch((e) => log("preload error", e));
   }
 
   function handleMounted() {
-    log('Splide mounted');
+    log("Splide mounted");
     const track = splide.Components.Elements.track;
     if (!track) {
-      log('No track element found');
+      log("No track element found");
       return;
     }
     renderer.initialize(track, maxPixelRatio, enableTextureCache);
@@ -90,7 +86,7 @@ export function WebGLTransition(
 
   function handleMove(newIndex: number, prevIndex: number) {
     if (isTransitioning) {
-      log('skip - already transitioning');
+      log("skip - already transitioning");
       return;
     }
     const fromUrl = getSlideImageUrl(prevIndex);
@@ -111,7 +107,7 @@ export function WebGLTransition(
       Promise.all([renderer.loadTexture(fromUrl), renderer.loadTexture(toUrl)])
         .then(([from, to]) => startTransition(from, to))
         .catch((e) => {
-          console.error('[WebGLTransition] transition error', e);
+          console.error("[WebGLTransition] transition error", e);
           isTransitioning = false;
         });
     }
@@ -131,7 +127,7 @@ export function WebGLTransition(
     currentTween = gsap.to(activeMaterial.uniforms.uProgress, {
       value: 1,
       duration,
-      ease: 'power2.inOut',
+      ease: "power2.inOut",
       onComplete: finishTransition,
     });
   }
@@ -218,15 +214,15 @@ export function WebGLTransition(
   }
 
   function mount() {
-    log('mount');
-    splide.on('mounted', handleMounted);
-    splide.on('move', handleMove);
+    log("mount");
+    splide.on("mounted", handleMounted);
+    splide.on("move", handleMove);
   }
 
   function destroy() {
-    log('destroy');
-    splide.off('mounted', handleMounted);
-    splide.off('move', handleMove);
+    log("destroy");
+    splide.off("mounted", handleMounted);
+    splide.off("move", handleMove);
 
     currentTween?.kill();
     currentTween = null;
@@ -255,5 +251,5 @@ export type {
   GlobalSettings,
   EffectParameters,
   WebGLTransitionOptions,
-} from './types';
-export { EFFECT_PRESETS } from './effects';
+} from "./types";
+export { EFFECT_PRESETS } from "./effects";

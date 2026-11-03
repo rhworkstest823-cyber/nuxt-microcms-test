@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import ContentsContainer from '~/components/layouts/ContentsContainer.vue';
-import PageCont from '~/components/layouts/PageCont.vue';
-import HeadingLv2 from '~/components/parts/HeadingLv2.vue';
-import WorksListContainer from '~/components/containers/WorksListContainer.vue';
-
+import WorksListContainer from "~/components/containers/WorksListContainer.vue";
+import ContentsContainer from "~/components/layouts/ContentsContainer.vue";
+import PageCont from "~/components/layouts/PageCont.vue";
+import HeadingLv2 from "~/components/parts/HeadingLv2.vue";
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import MainContainer from '~/components/layouts/MainContainer.vue';
-import ContentsContainer from '~/components/layouts/ContentsContainer.vue';
-import PageBottom from '~/components/layouts/PageBottom.vue';
-import ButtonDefault from '~/components/parts/ButtonDefault.vue';
+import ContentsContainer from "~/components/layouts/ContentsContainer.vue";
+import MainContainer from "~/components/layouts/MainContainer.vue";
+import PageBottom from "~/components/layouts/PageBottom.vue";
+import ButtonDefault from "~/components/parts/ButtonDefault.vue";
 
 const route = useRoute();
 const id = route.params.id as string;
@@ -15,21 +15,25 @@ const { data: newsDetail, error } = await useAsyncData(
   },
   {
     getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key],
-  }
+  },
 );
 
 if (error.value) {
-   throw createError({ statusCode: 404 })
+  throw createError({ statusCode: 404 });
 }
 
 usePageSeoMeta(
-  newsDetail.value?.title || 'ニュース詳細',
+  newsDetail.value?.title || "ニュース詳細",
   // contentはHTMLのため、タグを除去して先頭120文字をdescriptionにする
-  newsDetail.value?.content?.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 120) || 'ニュースの詳細ページです。',
+  newsDetail.value?.content
+    ?.replace(/<[^>]*>/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 120) || "ニュースの詳細ページです。",
 );
 
 const formattedDate = computed(() => {
-  if (!newsDetail.value?.datetime) return '';
+  if (!newsDetail.value?.datetime) return "";
   const date = new Date(newsDetail.value.datetime);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -45,7 +49,9 @@ const formattedDate = computed(() => {
       <div class="p-newsDetail__header">
         <ContentsContainer size="small">
           <div class="p-newsDetail__headerInfo">
-            <time class="p-newsDetail__date" :datetime="newsDetail?.datetime">{{ formattedDate }}</time>
+            <time class="p-newsDetail__date" :datetime="newsDetail?.datetime">{{
+              formattedDate
+            }}</time>
             <p class="p-newsDetail__tag">{{ newsDetail?.category?.name }}</p>
           </div>
           <h1 class="p-newsDetail__ttl">{{ newsDetail?.title }}</h1>
@@ -54,8 +60,18 @@ const formattedDate = computed(() => {
       <div class="p-newsDetail__kv">
         <ContentsContainer size="small" :isPcOnly="true">
           <ul class="p-newsDetail__kv-imgList">
-            <li v-for="image in newsDetail?.keyVisual || []" :key="image.url" class="p-newsDetail__kv-imgItem">
-              <img :src="image.url" :alt="image.alt || ''" :width="image.width || ''" :height="image.height || ''" class="p-newsDetail__kv-img" />
+            <li
+              v-for="image in newsDetail?.keyVisual || []"
+              :key="image.url"
+              class="p-newsDetail__kv-imgItem"
+            >
+              <img
+                :src="image.url"
+                :alt="image.alt || ''"
+                :width="image.width || ''"
+                :height="image.height || ''"
+                class="p-newsDetail__kv-img"
+              />
             </li>
           </ul>
         </ContentsContainer>

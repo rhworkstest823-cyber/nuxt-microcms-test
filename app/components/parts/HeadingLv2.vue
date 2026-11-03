@@ -10,7 +10,10 @@ const { level = 3, ...props } = defineProps<HeadingLv2Props>();
 const HeadingPropsSchema = z.object({
   level: z.number().int().min(2).max(6),
   text: z.string(),
-  textEn: z.string().regex(/^[A-Za-z\s]+$/, "英字（全角半角）とスペースのみ").optional(),
+  textEn: z
+    .string()
+    .regex(/^[A-Za-z\s]+$/, "英字（全角半角）とスペースのみ")
+    .optional(),
 });
 HeadingPropsSchema.parse({ level, ...props }); // propsのバリデーションを実行
 

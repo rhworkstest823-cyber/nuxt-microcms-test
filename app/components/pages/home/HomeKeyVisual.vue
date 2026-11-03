@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { MicroCMSImage } from 'microcms-js-sdk';
-import { Splide, SplideTrack, SplideSlide } from '@splidejs/vue-splide';
-import type { PaginationData } from '@splidejs/splide';
-import '@splidejs/vue-splide/css/core';
-import { createWebGLTransition } from '~/utils/splide-webgl-transition';
+import type { PaginationData } from "@splidejs/splide";
+import { Splide, SplideTrack, SplideSlide } from "@splidejs/vue-splide";
+import type { MicroCMSImage } from "microcms-js-sdk";
+import "@splidejs/vue-splide/css/core";
+import { createWebGLTransition } from "~/utils/splide-webgl-transition";
 
 type HomeKeyVisualProps = {
   keyVisual: MicroCMSImage[]; // KV画像は複数枚想定
@@ -14,7 +14,7 @@ const { keyVisual } = defineProps<HomeKeyVisualProps>();
 const isMountSplide = computed(() => keyVisual.length > 1);
 
 const kvSlideOptions = ref({
-  type: 'fade',
+  type: "fade",
   autoplay: true,
   autoWidth: true,
   rewind: true,
@@ -23,7 +23,7 @@ const kvSlideOptions = ref({
   pagination: true,
   arrows: false,
   classes: {
-    page: 'splide__pagination__page p-kvCarousel__pager',
+    page: "splide__pagination__page p-kvCarousel__pager",
   },
   drag: false,
   pauseOnHover: false,
@@ -35,8 +35,8 @@ const kvSlideOptions = ref({
 
 const kvExtensions = {
   webglTransition: createWebGLTransition({
-    effect: 'glass',
-    preset: 'Default',
+    effect: "glass",
+    preset: "Default",
     duration: 2.4,
   }),
 };
@@ -44,7 +44,7 @@ const kvExtensions = {
 const kvCarousel = ref(); // Splideインスタンスへの参照
 
 const calcCircleOffset = (circle: SVGCircleElement) => {
-  const radius = circle.getAttribute('r');
+  const radius = circle.getAttribute("r");
   return radius ? parseFloat(radius) * 2 * Math.PI : 0;
 };
 
@@ -58,16 +58,16 @@ const onMountedPagination = (paginationData: PaginationData) => {
   `;
 
   paginationData.items.forEach((item, index) => {
-    const pager = item['button'];
-    pager.insertAdjacentHTML('afterbegin', pagerElement);
+    const pager = item["button"];
+    pager.insertAdjacentHTML("afterbegin", pagerElement);
 
-    const pagerNumber = pager.querySelector('.kvCarousel__slideNumber') as HTMLElement;
+    const pagerNumber = pager.querySelector(".kvCarousel__slideNumber") as HTMLElement;
     pagerNumber.innerHTML = `0${index + 1}`;
 
-    const pagerCircleProgress = pager.querySelector('circle.--progress') as SVGCircleElement;
+    const pagerCircleProgress = pager.querySelector("circle.--progress") as SVGCircleElement;
     const circleOffset = calcCircleOffset(pagerCircleProgress);
-    pagerCircleProgress.setAttribute('stroke-dasharray', `${circleOffset}`);
-    pagerCircleProgress.setAttribute('stroke-dashoffset', `${circleOffset}`);
+    pagerCircleProgress.setAttribute("stroke-dasharray", `${circleOffset}`);
+    pagerCircleProgress.setAttribute("stroke-dashoffset", `${circleOffset}`);
   });
 };
 
@@ -75,18 +75,18 @@ const animatePager = (rate: number) => {
   const root = kvCarousel.value?.splide?.root as HTMLElement;
   if (!root) return;
 
-  const activePager = root.querySelector('.p-kvCarousel__pager.is-active') as HTMLElement;
+  const activePager = root.querySelector(".p-kvCarousel__pager.is-active") as HTMLElement;
   if (!activePager) return;
 
-  const activePagerCircle = activePager.querySelector('circle.--progress') as SVGCircleElement;
+  const activePagerCircle = activePager.querySelector("circle.--progress") as SVGCircleElement;
   if (!activePagerCircle) return;
 
   const progress = rate * 100;
   const circleOffset = calcCircleOffset(activePagerCircle);
   const dashOffset = circleOffset * (1 - progress / 100);
 
-  activePagerCircle.setAttribute('stroke-dasharray', `${circleOffset}`);
-  activePagerCircle.setAttribute('stroke-dashoffset', `${dashOffset}`);
+  activePagerCircle.setAttribute("stroke-dasharray", `${circleOffset}`);
+  activePagerCircle.setAttribute("stroke-dashoffset", `${dashOffset}`);
 };
 </script>
 

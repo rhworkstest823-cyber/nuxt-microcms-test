@@ -1,7 +1,9 @@
 <template>
   <header class="l-header">
     <div class="l-header__inner">
-      <NuxtLink to="/" class="l-header__logo"><NuxtImg src="/assets/images/common/logo.svg" alt="Company Logo" /></NuxtLink>
+      <NuxtLink to="/" class="l-header__logo"
+        ><NuxtImg src="/assets/images/common/logo.svg" alt="Company Logo"
+      /></NuxtLink>
       <nav class="l-header__nav" aria-label="グローバルナビゲーション">
         <ul class="l-header__navList">
           <li class="l-header__navItem">

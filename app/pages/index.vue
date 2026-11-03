@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import HomeKeyVisualContainer from '~/components/containers/HomeKeyVisualContainer.vue';
-import MainContainer from '~/components/layouts/MainContainer.vue';
-import HomeNews from '~/components/pages/home/HomeNews.vue';
-import HomeWorks from '~/components/pages/home/HomeWorks.vue';
+import HomeKeyVisualContainer from "~/components/containers/HomeKeyVisualContainer.vue";
+import MainContainer from "~/components/layouts/MainContainer.vue";
+import HomeNews from "~/components/pages/home/HomeNews.vue";
+import HomeWorks from "~/components/pages/home/HomeWorks.vue";
 
 definePageMeta({
-  layout: 'default',
+  layout: "default",
 });
 
-usePageSeoMeta('トップページ', 'これはトップページの説明文です。これはトップページの説明文です。これはトップページの説明文です。これはトップページの説明文です。');
+usePageSeoMeta(
+  "トップページ",
+  "これはトップページの説明文です。これはトップページの説明文です。これはトップページの説明文です。これはトップページの説明文です。",
+);
 </script>
 
 <template>

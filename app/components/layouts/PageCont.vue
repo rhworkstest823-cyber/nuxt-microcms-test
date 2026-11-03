@@ -1,10 +1,10 @@
 <script setup lang="ts">
 interface PageContProps {
-  col?: 'default' | 'col-2';
+  col?: "default" | "col-2";
   customClass?: string;
 }
 
-const { col, customClass = '' } = defineProps<PageContProps>();
+const { col, customClass = "" } = defineProps<PageContProps>();
 const slots = useSlots();
 </script>
 

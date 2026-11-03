@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Header from '~/components/layouts/Header.vue';
-import BgContainer from '~/components/layouts/BgContainer.vue';
+import BgContainer from "~/components/layouts/BgContainer.vue";
+import Header from "~/components/layouts/Header.vue";
 </script>
 
 <template>

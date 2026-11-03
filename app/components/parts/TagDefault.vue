@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type TagProps = {
-  text: string
-}
+  text: string;
+};
 const { text } = defineProps<TagProps>();
 </script>
 

@@ -1,19 +1,19 @@
 <script setup lang="ts">
 interface ContentsContainerProps {
-  size?: 'small' | 'large';
+  size?: "small" | "large";
   isPcOnly?: boolean;
-};
+}
 
 const props = defineProps<ContentsContainerProps>();
 
 const containerClass = computed(() => {
   switch (props.size) {
-    case 'small':
-      return '--mw800';
-    case 'large':
-      return '--mw1200';
+    case "small":
+      return "--mw800";
+    case "large":
+      return "--mw1200";
     default:
-      return '';
+      return "";
   }
 });
 </script>

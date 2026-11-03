@@ -2,22 +2,56 @@
 interface SplideCarouselArrowsProps {
   customCarouselClass?: string;
 }
-const { customCarouselClass = '' } = defineProps<SplideCarouselArrowsProps>();
+const { customCarouselClass = "" } = defineProps<SplideCarouselArrowsProps>();
 </script>
 
 <template>
-  <div :class="['splide__arrows splide__arrows--ltr c-pager__list', `${customCarouselClass}__arrows`]">
-    <button type="button" :class="['c-pager c-pager--prev splide__arrow splide__arrow--prev', `${customCarouselClass}__arrow`, `${customCarouselClass}__arrow--prev`]">
+  <div
+    :class="['splide__arrows splide__arrows--ltr c-pager__list', `${customCarouselClass}__arrows`]"
+  >
+    <button
+      type="button"
+      :class="[
+        'c-pager c-pager--prev splide__arrow splide__arrow--prev',
+        `${customCarouselClass}__arrow`,
+        `${customCarouselClass}__arrow--prev`,
+      ]"
+    >
       <span class="c-pager__arrow">
-        <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 -1.74846e-07L5 15.4998M5 15.4998L9 11.0554M5 15.4998L1 11.0554" stroke="white"/>
+        <svg
+          width="10"
+          height="17"
+          viewBox="0 0 10 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 -1.74846e-07L5 15.4998M5 15.4998L9 11.0554M5 15.4998L1 11.0554"
+            stroke="white"
+          />
         </svg>
       </span>
     </button>
-    <button type="button" :class="['c-pager c-pager--next splide__arrow splide__arrow--next', `${customCarouselClass}__arrow`, `${customCarouselClass}__arrow--next`]">
+    <button
+      type="button"
+      :class="[
+        'c-pager c-pager--next splide__arrow splide__arrow--next',
+        `${customCarouselClass}__arrow`,
+        `${customCarouselClass}__arrow--next`,
+      ]"
+    >
       <span class="c-pager__arrow">
-        <svg width="10" height="17" viewBox="0 0 10 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 -1.74846e-07L5 15.4998M5 15.4998L9 11.0554M5 15.4998L1 11.0554" stroke="white"/>
+        <svg
+          width="10"
+          height="17"
+          viewBox="0 0 10 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 -1.74846e-07L5 15.4998M5 15.4998L9 11.0554M5 15.4998L1 11.0554"
+            stroke="white"
+          />
         </svg>
       </span>
     </button>

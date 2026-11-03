@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import MainContainer from '~/components/layouts/MainContainer.vue';
-import ContentsContainer from '~/components/layouts/ContentsContainer.vue';
-import PageCont from '~/components/layouts/PageCont.vue';
-import PageBottom from '~/components/layouts/PageBottom.vue';
-import HeadingLv2 from '~/components/parts/HeadingLv2.vue';
-import ButtonDefault from '~/components/parts/ButtonDefault.vue';
+import ContentsContainer from "~/components/layouts/ContentsContainer.vue";
+import MainContainer from "~/components/layouts/MainContainer.vue";
+import PageBottom from "~/components/layouts/PageBottom.vue";
+import PageCont from "~/components/layouts/PageCont.vue";
+import ButtonDefault from "~/components/parts/ButtonDefault.vue";
+import HeadingLv2 from "~/components/parts/HeadingLv2.vue";
 
 const route = useRoute();
 const id = route.params.id as string;
@@ -21,12 +21,12 @@ const { data: businessDetail, error } = await useAsyncData(
 );
 
 if (error.value) {
-   throw createError({ statusCode: 404 })
+  throw createError({ statusCode: 404 });
 }
 
 usePageSeoMeta(
-  businessDetail.value?.title || '事例詳細',
-  businessDetail.value?.copyText || '事例の詳細ページです。',
+  businessDetail.value?.title || "事例詳細",
+  businessDetail.value?.copyText || "事例の詳細ページです。",
 );
 
 const businessDetailRef = ref(structuredClone(businessDetail.value));
@@ -44,16 +44,35 @@ const businessDetailRef = ref(structuredClone(businessDetail.value));
         <ContentsContainer :isPcOnly="true">
           <div class="p-businessDetail__kvInner">
             <ul class="p-businessDetail__kv-imgList">
-              <li v-for="(image, index) in businessDetailRef?.keyVisual || []" :key="index" class="p-businessDetail__kv-imgItem">
-                <img :src="image.url" :alt="image.alt || `KV画像${index + 1}`" class="p-businessDetail__kv-img" />
+              <li
+                v-for="(image, index) in businessDetailRef?.keyVisual || []"
+                :key="index"
+                class="p-businessDetail__kv-imgItem"
+              >
+                <img
+                  :src="image.url"
+                  :alt="image.alt || `KV画像${index + 1}`"
+                  class="p-businessDetail__kv-img"
+                />
               </li>
             </ul>
             <div class="p-businessDetail__kvCont">
               <p class="p-businessDetail__kvCopy">{{ businessDetailRef?.copyText }}</p>
               <p class="p-businessDetail__kvDescription">{{ businessDetailRef?.description }}</p>
               <ul class="p-businessDetail__linkList">
-                <li v-for="link in businessDetailRef?.linkList || []" :key="link.url" class="p-businessDetail__linkItem">
-                  <ButtonDefault :text="link.label" element="nuxt-link" :to="link.url" class="p-businessDetail__link" target="_blank" rel="noopener noreferrer"></ButtonDefault>
+                <li
+                  v-for="link in businessDetailRef?.linkList || []"
+                  :key="link.url"
+                  class="p-businessDetail__linkItem"
+                >
+                  <ButtonDefault
+                    :text="link.label"
+                    element="nuxt-link"
+                    :to="link.url"
+                    class="p-businessDetail__link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ></ButtonDefault>
                 </li>
               </ul>
             </div>
@@ -70,7 +89,13 @@ const businessDetailRef = ref(structuredClone(businessDetail.value));
             </template>
             <template #main>
               <ul class="p-businessDetail__pointList">
-                <li v-for="point in businessDetailRef?.pointList || []" :key="point.text" class="p-businessDetail__pointItem">{{ point.text }}</li>
+                <li
+                  v-for="point in businessDetailRef?.pointList || []"
+                  :key="point.text"
+                  class="p-businessDetail__pointItem"
+                >
+                  {{ point.text }}
+                </li>
               </ul>
             </template>
           </PageCont>
@@ -82,7 +107,11 @@ const businessDetailRef = ref(structuredClone(businessDetail.value));
             </template>
             <template #main>
               <dl class="p-businessDetail__outlineList">
-                <div v-for="outline in businessDetailRef?.outlineList || []" :key="outline.outlineTitle" class="p-businessDetail__outlineItem">
+                <div
+                  v-for="outline in businessDetailRef?.outlineList || []"
+                  :key="outline.outlineTitle"
+                  class="p-businessDetail__outlineItem"
+                >
                   <dt class="p-businessDetail__outlineTtl">{{ outline.outlineTitle }}</dt>
                   <dd class="p-businessDetail__outlineDesc">{{ outline.outlineDescription }}</dd>
                 </div>
@@ -102,11 +131,17 @@ const businessDetailRef = ref(structuredClone(businessDetail.value));
                   :src="businessDetailRef.googleMap.mapEmbedUrl"
                   width="600"
                   height="450"
-                  style="border:0;"
+                  style="border: 0"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
-                <ButtonDefault v-if="businessDetailRef?.googleMap?.mapLink" text="Google Map" element="nuxt-link" :to="businessDetailRef?.googleMap?.mapLink" :back="true" />
+                <ButtonDefault
+                  v-if="businessDetailRef?.googleMap?.mapLink"
+                  text="Google Map"
+                  element="nuxt-link"
+                  :to="businessDetailRef?.googleMap?.mapLink"
+                  :back="true"
+                />
               </div>
             </template>
           </PageCont>

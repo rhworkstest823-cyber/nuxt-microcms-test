@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import ContentsContainer from '~/components/layouts/ContentsContainer.vue';
-import PageCont from '~/components/layouts/PageCont.vue';
-import Heading from '~/components/parts/Heading.vue';
-import NewsListContainer from '~/components/containers/NewsListContainer.vue';
-
+import NewsListContainer from "~/components/containers/NewsListContainer.vue";
+import ContentsContainer from "~/components/layouts/ContentsContainer.vue";
+import PageCont from "~/components/layouts/PageCont.vue";
+import Heading from "~/components/parts/Heading.vue";
 </script>
 
 <template>
@@ -12,7 +11,7 @@ import NewsListContainer from '~/components/containers/NewsListContainer.vue';
       <PageCont col="col-2">
         <template #side>
           <div>
-            <Heading :level="2" text="ニュース" textEn="news"/>
+            <Heading :level="2" text="ニュース" textEn="news" />
           </div>
         </template>
         <template #main>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NewsListResponse } from '#shared/types/microcms';
+import type { NewsListResponse } from "#shared/types/microcms";
 
 interface NewsListProps {
   response: NewsListResponse;
@@ -33,7 +33,9 @@ const formatedDate = computed(() => {
       <NuxtLink :to="`/news/${news.id}`" class="c-news__inner">
         <span v-if="news.category" class="c-news__itemTag">{{ news.category?.name }}</span>
         <span class="c-news__itemText">{{ news.title }}</span>
-        <span class="c-news__itemDate"><time :datetime="news.datetime">{{ formatedDate(news.datetime) }}</time></span>
+        <span class="c-news__itemDate"
+          ><time :datetime="news.datetime">{{ formatedDate(news.datetime) }}</time></span
+        >
       </NuxtLink>
     </li>
   </ul>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Business } from '#shared/types/microcms';
-import { Splide, SplideTrack, SplideSlide } from '@splidejs/vue-splide';
-import SplideCarouselArrows from '~/components/parts/SplideCarouselArrows.vue';
-import TagDefault from '~/components/parts/TagDefault.vue';
+import { Splide, SplideTrack, SplideSlide } from "@splidejs/vue-splide";
+import type { Business } from "#shared/types/microcms";
+import SplideCarouselArrows from "~/components/parts/SplideCarouselArrows.vue";
+import TagDefault from "~/components/parts/TagDefault.vue";
 
 type HomeWorksListProps = {
-  response: Business[]
-}
+  response: Business[];
+};
 const { response } = defineProps<HomeWorksListProps>();
 
 const worksSlideOptions = ref({
@@ -15,7 +15,7 @@ const worksSlideOptions = ref({
   gap: 1,
   focus: 0,
   omitEnd: true,
-  ease: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+  ease: "cubic-bezier(0.165, 0.84, 0.44, 1)",
   pagination: false,
   arrows: true,
 });
@@ -24,11 +24,13 @@ const worksSlideOptions = ref({
 <template>
   <Splide class="p-worksCarousel" :has-track="false" :options="worksSlideOptions" aria-label="">
     <div class="p-worksCarousel__track-wrapper">
-
       <SplideTrack class="p-worksCarousel__track">
         <SplideSlide class="p-worksCarousel__slide" v-for="item in response" :key="item.id">
           <NuxtLink :to="`/business/${item.id}`" class="p-worksCarousel__slide-inner">
-            <div v-if="item.keyVisual && item.keyVisual.length > 0" class="p-worksCarousel__slide-img">
+            <div
+              v-if="item.keyVisual && item.keyVisual.length > 0"
+              class="p-worksCarousel__slide-img"
+            >
               <NuxtImg
                 :src="item.keyVisual?.at(0)?.url"
                 :alt="item.keyVisual?.at(0)?.alt || ''"
@@ -39,7 +41,9 @@ const worksSlideOptions = ref({
             </div>
             <div class="p-worksCarousel__slide-cont">
               <ul class="p-worksCarousel__slide-tagList">
-                <li class="p-worksCarousel__slide-tagItem" v-for="tag in item.tag" :key="tag"><TagDefault :text="tag" /></li>
+                <li class="p-worksCarousel__slide-tagItem" v-for="tag in item.tag" :key="tag">
+                  <TagDefault :text="tag" />
+                </li>
               </ul>
               <div class="p-worksCarousel__slide-bottom">
                 <p class="p-worksCarousel__slide-name">{{ item.title }}</p>

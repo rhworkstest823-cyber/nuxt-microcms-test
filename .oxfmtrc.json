@@ -2,8 +2,20 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "experimentalSortImports": {
     "order": "asc",
-    "newlinesBetween": false,
+    "newlinesBetween": false
   },
   "embeddedLanguageFormatting": "auto",
-  "ignorePatterns": [".claude/**", "spec/**", ".nuxt/**", ".output/**", "dist/**", "public/**", ".github/**", ".vscode/**", "buildspec.yml", "package-lock.json", "*.md"],
+  "ignorePatterns": [
+    ".claude/**",
+    "spec/**",
+    ".nuxt/**",
+    ".output/**",
+    "dist/**",
+    "public/**",
+    ".github/**",
+    ".vscode/**",
+    "buildspec.yml",
+    "package-lock.json",
+    "*.md"
+  ]
 }

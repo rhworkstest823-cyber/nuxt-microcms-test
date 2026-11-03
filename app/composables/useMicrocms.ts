@@ -1,7 +1,7 @@
 import { createClient } from "microcms-js-sdk";
-import type { MicroCMSQueries } from 'microcms-js-sdk'
-import type { News, Business, BusinessCategory } from '#shared/types/microcms';
-import { MICROCMS_ENDPOINTS } from '#shared/lib/endpoints';
+import type { MicroCMSQueries } from "microcms-js-sdk";
+import { MICROCMS_ENDPOINTS } from "#shared/lib/endpoints";
+import type { News, Business, BusinessCategory } from "#shared/types/microcms";
 
 export const useMicrocms = () => {
   const config = useRuntimeConfig();
@@ -61,7 +61,7 @@ export const useMicrocms = () => {
   const getFrontPage = (queries?: MicroCMSQueries) => {
     const response = client.getListDetail<FrontPage>({
       endpoint: MICROCMS_ENDPOINTS.FRONT_PAGE,
-      contentId: 'contents',
+      contentId: "contents",
       queries,
     });
     return response;
